@@ -1,0 +1,35 @@
+    $scope.isPcFn = function () {
+      var userAgentInfo = navigator.userAgent;
+      var Agents = ["Android", "iPhone",
+        "SymbianOS", "Windows Phone",
+        "iPad", "iPod"
+      ];
+      var flag = true;
+      for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+          flag = false;
+          break;
+        }
+      }
+      return flag;
+    }
+    //判断机型
+    $scope.av_leixing = $scope.isPcFn();
+
+
+    $scope.lastnum = $scope.video.video_link.replace(/^(.*[n])*.*(.|n)$/g, "$2");
+        if($scope.lastnum==8){
+          $timeout(function () {
+            if (Hls.isSupported() && $scope.video.living_status!=0) {
+                var video = document.getElementById('video');
+                var hls = new Hls();
+                hls.loadSource($scope.video.video_link);
+                if($scope.av_leixing){
+                  hls.attachMedia(video);
+                }
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            }
+          }, 500);
+        }

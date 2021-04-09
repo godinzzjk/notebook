@@ -1,0 +1,16 @@
+showdoc在线链接
+https://www.showdoc.com.cn/783813744377474?page_id=6524095313537171
+github预览在线地址
+https://github1s.com/godinzzjk/notebook
+
+1：github删除项目：
+点击要删除的项目=>点击Settings=>Options=>Delete this repository
+
+2：vsCode查找行
+Ctrl+P 输入:lineNum
+
+3：在线预览Github  /*	https://github1s.com/godinzzjk/notebook	*/
+在原有的github地址添加1s
+
+4：控制台打开vscode
+地址栏输入cmd,命令行输入code .

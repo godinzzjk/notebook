@@ -1,0 +1,37 @@
+
+<div class="downTime_div stand_flex">
+	<span>距活动开始&nbsp;</span>
+	<img src="images/2020app/time/{{timeAfterDay1}}.jpg" alt="" width="15">
+	<img src="images/2020app/time/{{timeAfterDay2}}.jpg" alt="" width="15">
+	<span>&nbsp;天&nbsp;</span>
+	<img src="images/2020app/time/{{timeAfterHours1}}.jpg" alt="" width="15">
+	<img src="images/2020app/time/{{timeAfterHours2}}.jpg" alt="" width="15">
+	<span>&nbsp;小时&nbsp;</span>
+	<img src="images/2020app/time/{{timeAfterMin1}}.jpg" alt="" width="15">
+	<img src="images/2020app/time/{{timeAfterMin2}}.jpg" alt="" width="15">
+	<span>&nbsp;分&nbsp;</span>
+	<img src="images/2020app/time/{{timeAfterSs1}}.jpg" alt="" width="15">
+	<img src="images/2020app/time/{{timeAfterSs2}}.jpg" alt="" width="15">
+	<span>&nbsp;秒</span>
+</div>
+
+
+// 时间计算
+	$scope.setInitTimeFn = function (settime) {
+	$scope.setDownTime = $interval(function () {
+	var getTimeNow = settime - parseInt(new Date().getTime() / 1000);
+	$scope.timeAfterDay = parseInt(getTimeNow / 60 / 60 / 24) > 9 ? parseInt(getTimeNow / 60 / 60 / 24) : '0' + parseInt(getTimeNow / 60 / 60 / 24);
+	$scope.timeAfterHours = parseInt(getTimeNow / 60 / 60 % 24) > 9 ? parseInt(getTimeNow / 60 / 60 % 24) : '0' + parseInt(getTimeNow / 60 / 60 % 24);
+	$scope.timeAfterMin = parseInt(getTimeNow / 60 % 60) > 9 ? parseInt(getTimeNow / 60 % 60) : '0' + parseInt(getTimeNow / 60 % 60);
+	$scope.timeAfterSs = parseInt(getTimeNow % 60) > 9 ? parseInt(getTimeNow % 60) : '0' + parseInt(getTimeNow % 60);
+	$scope.timeAfterDay1 = $scope.timeAfterDay.toString().substr(0, 1);
+	$scope.timeAfterDay2 = $scope.timeAfterDay.toString().substr(1, 1);
+	$scope.timeAfterHours1 = $scope.timeAfterHours.toString().substr(0, 1);
+	$scope.timeAfterHours2 = $scope.timeAfterHours.toString().substr(1, 1);
+	$scope.timeAfterMin1 = $scope.timeAfterMin.toString().substr(0, 1);
+	$scope.timeAfterMin2 = $scope.timeAfterMin.toString().substr(1, 1);
+	$scope.timeAfterSs1 = $scope.timeAfterSs.toString().substr(0, 1);
+	$scope.timeAfterSs2 = $scope.timeAfterSs.toString().substr(1, 1);
+	// $scope.downTimeAll ="距活动开始 " + $scope.timeAfterDay + " 天 " + $scope.timeAfterHours + " 小时 " + $scope.timeAfterMin + " 分 " + $scope.timeAfterSs + " 秒";
+	}, 1000);
+}

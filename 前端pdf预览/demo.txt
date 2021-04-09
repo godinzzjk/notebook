@@ -1,0 +1,3 @@
+window.location.href="../pdf/web/viewer.html?file="+val.pdf_url+"#page=1";
+val.pdf_url:pdf的完整在线地址
+导入的文件(第二个app同级)
